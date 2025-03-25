@@ -1,4 +1,4 @@
-package examples;
+package lecture1_examples;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 public class LoggingExamples {
     private static final Logger logger = LogManager.getLogger(LoggingExamples.class);
 
-    public static void main(String[] args) {
+    public static void example() {
         logger.info("Application started");
 
         int number = 5;
@@ -26,4 +26,12 @@ public class LoggingExamples {
         logger.debug("Dividing {} by {}", a, b);
         return a / b;  // This will throw an exception if b = 0
     }
+
+    public static void main(String[] args) {
+        // Simple logging
+        LoggingExamples.example();
+
+
+    }
+
 }
