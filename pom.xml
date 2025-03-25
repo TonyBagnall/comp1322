@@ -49,7 +49,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>lecture1_examples.FirstApp</mainClass>
+                            <mainClass>week9_examples.FirstApp</mainClass>
                         </configuration>
                     </execution>
                 </executions>
@@ -62,7 +62,7 @@
                     <execution><goals><goal>java</goal></goals></execution>
                 </executions>
                 <configuration>
-                    <mainClass>lecture1_examples.LoggingExamples</mainClass>
+                    <mainClass>week9_examples.LoggingExamples</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -72,7 +72,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>lecture1_examples.FirstApp</mainClass>
+                            <mainClass>week9_examples.FirstApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

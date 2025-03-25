@@ -1,4 +1,4 @@
-package lecture1_examples;
+package week9_examples;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package lecture1_examples;
+package week9_examples;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,4 +1,4 @@
-package lecture1_examples;
+package week9_examples;
 
 import java.util.function.Predicate;
 
