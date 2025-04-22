@@ -4,7 +4,6 @@ Examples for programming 2 for material covered by @TonyBagnall in weeks 7,9,10 
 
 ## Examples for week 7 lecture on design patterns
 
-### package week7_examples.functors
 - Functors with distance functions and comparators
 - Movie database iterator example
 - File system composition example
