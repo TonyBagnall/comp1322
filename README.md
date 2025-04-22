@@ -1,5 +1,6 @@
-# Examples for comp-13222-programming 2- for material covered by Tony Bagnall 
-in weeks 7,9,10 and 11
+# comp-1322
+
+Examples for programming 2 for material covered by Tony Bagnall in weeks 7,9,10 and 11
 
 ## Examples for week 7 lecture on design patterns
 
