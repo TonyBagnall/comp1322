@@ -1,6 +1,7 @@
 package week10_examples.lecture10_2;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +24,6 @@ public class PropertyExample extends Application {
         System.out.println(" b1 = "+" property = "+bProperty);
         String str3 = button.textProperty().get();
         System.out.println(" str = "+str+" str2 = "+str2+" str3 = "+str3);
-
 
         VBox root = new VBox(10, textField, label, button);
         root.setStyle("-fx-padding: 20px; -fx-alignment: center;");
