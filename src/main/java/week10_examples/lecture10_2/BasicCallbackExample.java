@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class BasicCallbackExample extends Application {
 
     @Override
-     public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) {
         // Create a button
         Button button = new Button("Press me in case of fire");
         String str = "Don't Panic";
