@@ -1,4 +1,4 @@
-package week7_examples.iterators;
+package week5_examples.iterators;
 
 import java.util.ArrayList;
 import java.util.Iterator;

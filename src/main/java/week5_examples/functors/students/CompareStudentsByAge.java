@@ -1,4 +1,4 @@
-package week7_examples.functors.students;
+package week5_examples.functors.students;
 
 /**
  * Example of using the built in interface Comparator

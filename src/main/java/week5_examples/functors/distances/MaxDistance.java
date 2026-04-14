@@ -1,4 +1,4 @@
-package week7_examples.functors.distances;
+package week5_examples.functors.distances;
 
 public class MaxDistance implements Distance{
     @Override

@@ -1,4 +1,4 @@
-package week7_examples.functors.students;
+package week5_examples.functors.students;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -34,9 +34,9 @@ public class FunctorExamples{
 
     public static void studentExamples(){
         Student[] s= new Student[3];
-        s[0]=new Student("Alice",66);
-        s[1]=new Student("Zac",55);
-        s[2]=new Student("Thomas",88);
+        s[0]=new Student("Alice",22);
+        s[1]=new Student("Zac",19);
+        s[2]=new Student("Thomas",21);
         Student temp=s[0];
         Comparator<Student> functor=new CompareStudentsByAge();
         selectionSort(s,functor);

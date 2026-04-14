@@ -1,4 +1,4 @@
-package week7_examples.composition;
+package week5_examples.composition;
 
 public class FileSystemExplorer {
 

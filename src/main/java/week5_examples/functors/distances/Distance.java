@@ -1,4 +1,4 @@
-package week7_examples.functors.distances;
+package week5_examples.functors.distances;
 
 /**
  * Functor interface for the operation of measuring the distance between two double arrays

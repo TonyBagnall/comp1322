@@ -1,4 +1,4 @@
-package week7_examples.iterators.movies;
+package week5_examples.iterators.movies;
 
 /**
  * Week 7 live demo of Iterators with movie class
