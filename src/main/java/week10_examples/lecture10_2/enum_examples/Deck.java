@@ -1,4 +1,4 @@
-package week10_examples.lecture10_1.enum_examples;
+package week10_examples.lecture10_2.enum_examples;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,10 @@
-package week5_examples.functors.students;
+package week5_examples.selector.students;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 public class FunctorExamples{
     static void selectionSort(Student[] s, CompareStudent cmp){

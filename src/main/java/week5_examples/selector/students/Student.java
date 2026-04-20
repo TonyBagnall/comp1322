@@ -1,4 +1,4 @@
-package week5_examples.functors.students;/*
+package week5_examples.selector.students;/*
 week7_examples.functors.Student example used in Week 7 functor examples
  */
 
