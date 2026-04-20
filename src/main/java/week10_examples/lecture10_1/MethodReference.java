@@ -1,4 +1,4 @@
-package week9_examples;
+package week10_examples.lecture10_1;
 
 import java.util.function.*;
 
