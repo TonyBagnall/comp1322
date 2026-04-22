@@ -1,5 +1,5 @@
 
-package week10_examples.lecture10_2.enum_examples;
+package week11_examples.lecture11_1.enum_examples;
 
 /** Example of an enum type as an anonymous inner class
  *

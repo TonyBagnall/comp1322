@@ -1,4 +1,5 @@
-package week10_examples.lecture10_3;
+package week10_examples.lecture10_3.legacy;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,7 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class StyleSheetExample extends Application {
+public class ComponentExample extends Application {
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -16,39 +18,33 @@ public class StyleSheetExample extends Application {
         TextField textField = new TextField();
         Button button = new Button("Submit");
 
-        // Add style classes
-        label.getStyleClass().add("my-label");
-        textField.getStyleClass().add("my-textfield");
-        button.getStyleClass().add("my-button");
+        // Apply inline styles
+        label.setStyle("-fx-font-size: 16px; -fx-text-fill: darkslateblue;");
+        textField.setStyle("-fx-border-color: grey; -fx-border-width: 2px; -fx-background-color: #f0f0f0;");
+        button.setStyle("-fx-background-color: teal; -fx-text-fill: white; -fx-font-size: 14px;");
 
         // Set button action
         button.setOnAction(event -> {
             String name = textField.getText();
             if (name.trim().isEmpty()) {
                 label.setText("Please enter a valid name!");
-                label.getStyleClass().removeAll("success-label");
-                label.getStyleClass().add("error-label");
+                label.setStyle("-fx-font-size: 16px; -fx-text-fill: red;");
             } else {
                 label.setText("Hello, " + name + "!");
-                label.getStyleClass().removeAll("error-label");
-                label.getStyleClass().add("success-label");
+                label.setStyle("-fx-font-size: 16px; -fx-text-fill: green;");
             }
         });
 
         // Layout
         VBox root = new VBox(10); // spacing = 10
-        root.getStyleClass().add("root-pane");
+        root.setStyle("-fx-padding: 20px; -fx-alignment: center; -fx-background-color: whitesmoke;");
         root.getChildren().addAll(label, textField, button);
 
         // Scene
         Scene scene = new Scene(root, 300, 200);
-        // Attach the stylesheet
-        var style = getClass().getResource("/style.css").toExternalForm();
-        // Attach the stylesheet
-        scene.getStylesheets().add(style);
 
         // Stage
-        primaryStage.setTitle("Styled JavaFX with CSS");
+        primaryStage.setTitle("Styled JavaFX Example");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -56,4 +52,5 @@ public class StyleSheetExample extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

@@ -1,4 +1,4 @@
-package week10_examples.lecture10_2.enum_examples;/*
+package week11_examples.lecture11_1.enum_examples;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.

@@ -1,4 +1,4 @@
-package week10_examples.lecture10_3;
+package week10_examples.lecture10_3.legacy;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;

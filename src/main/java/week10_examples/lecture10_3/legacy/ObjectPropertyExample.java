@@ -1,4 +1,4 @@
-package week10_examples.lecture10_2;
+package week10_examples.lecture10_3.legacy;
 import javafx.application.Application;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;

@@ -61,8 +61,23 @@ public class NestedClassButtons extends Application {
 
         button1.setOnAction(new InnerButtonHandler());
         button2.setOnAction(new NestedButtonHandler(sharedArea));
+        Button button3 = new Button("Use anon class");
+        button3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) { // Your action here
+                totalClicks++;
+                instanceArea.appendText("Anon class handler fired\n");
+                sharedArea.appendText("totalClicks = " + totalClicks + "\n");
 
-        VBox buttonBox = new VBox(10, button1, button2);
+            }
+        });
+        Button button4 = new Button("Use lambda");
+        button4.setOnAction(event -> {
+            totalClicks++;
+            instanceArea.appendText("lambda class handler fired\n");
+            sharedArea.appendText("totalClicks = " + totalClicks + "\n");
+        });
+        VBox buttonBox = new VBox(10, button1, button2, button3,button4);
         VBox textBox = new VBox(10, instanceArea, sharedArea);
 
         HBox root = new HBox(15, buttonBox, textBox);

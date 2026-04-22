@@ -1,5 +1,5 @@
 package week10_examples.lecture10_1;
-// Simple iterator example with innger class
+// Simple iterator example with inner class
 import java.util.Iterator;
 
 public class IntRange implements Iterable<Integer> {

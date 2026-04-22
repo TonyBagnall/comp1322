@@ -1,5 +1,4 @@
-package week10_examples.lecture10_3;
-
+package week10_examples.lecture10_3.legacy;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,8 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ComponentExample extends Application {
-
+public class InlineStylingExample extends Application {
 
     @Override
     public void start(Stage primaryStage) {
@@ -52,5 +50,4 @@ public class ComponentExample extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

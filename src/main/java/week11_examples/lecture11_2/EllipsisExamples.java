@@ -1,4 +1,4 @@
-package week10_examples.lecture10_1;
+package week11_examples.lecture11_2;
 
 public class EllipsisExamples {
     public static int sum(int... numbers) {

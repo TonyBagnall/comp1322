@@ -1,4 +1,4 @@
-package week10_examples.lecture10_3;
+package week10_examples.lecture10_3.legacy;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
