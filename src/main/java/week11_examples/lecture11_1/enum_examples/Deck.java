@@ -1,11 +1,12 @@
 package week11_examples.lecture11_1.enum_examples;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Deck {
     public enum Rank {TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE}
     public enum Suit {CLUBS, DIAMONDS, HEARTS, SPADES}
-
+    Map m;
     private ArrayList<Card> deck;
     public static class Card {
         private Rank rank;

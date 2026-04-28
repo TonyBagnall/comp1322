@@ -1,9 +1,6 @@
 package week11_examples.lecture11_1.enum_examples;
 
-import java.text.DecimalFormat;
-
-public class CountryExample {
-    public enum Country{UK(68016177,2855),FRANCE(65325997,2752),
+public enum Country{UK(68016177,2855),FRANCE(65325997,2752),
         GERMANY(83881435,3948),ITALY(60429692,2084);
         private double population;
         private double gdp; //In billions
@@ -25,20 +22,6 @@ public class CountryExample {
         }
     }
 
-    public static void main(String[] args) {
-        DecimalFormat df = new DecimalFormat("##.##");
-        Country myCountry=Country.UK;
-        Country otherCountry=Country.FRANCE;
-        System.out.println(myCountry+" has GDP per head = $"+df.format(myCountry.gdpPerPerson()));
-        System.out.println(myCountry+" has = "+df.format(100*myCountry.proportionOfTheWorldPop())+"% of the world population");
-        System.out.println(myCountry+" has = "+df.format(100*myCountry.proportionOfTheWorldGDP())+"% of the world GDP");
-    }
-    public static boolean biggestCountry(Country a){
-        if(a==Country.GERMANY)//Current biggest in the list
-            return true;
-        return false;
-    }
-
 /*
 	static public abstract class Country{
 		private long population;
@@ -54,6 +37,3 @@ public class CountryExample {
 		public static final Country ITALY=new Country(60429692,2084){};
 	}
 */
-
-
-}

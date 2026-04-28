@@ -1,5 +1,6 @@
 package week10_examples.lecture10_3;
 
+
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -9,32 +10,40 @@ import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameThirdVersion extends Application {
+public class GameFourthVersion extends Application {
+
+    private static final int CELL_SIZE = 30;
+    private static final int WINDOW_WIDTH = 540;
+    private static final int WINDOW_HEIGHT = 680;
 
     private Stage primaryStage;
 
-    // Play-scene state
+    // JavaFX interface state
     private Timeline gameTimeline;
     private Pane boardPane;
     private Label statusLabel;
     private FallingBlock fallingBlock;
-    private int blockRow;
-    private int blockCol;
 
-
-
-    private static final int COLS = 10;
-    private static final int ROWS = 16;
-    private static final int CELL_SIZE = 30;
-    private static final int WINDOW_WIDTH = 540;
-    private static final int WINDOW_HEIGHT = 680;
+    // Plain Java game logic
+    private final FallingBlockGame game = new FallingBlockGame();
 
     @Override
     public void start(Stage primaryStage) {
@@ -59,10 +68,11 @@ public class GameThirdVersion extends Application {
         );
 
         Label infoLabel = new Label(
-                "Second version\n\n" +
+                "Third version\n\n" +
                         "Play Game switches to the game scene in the same stage.\n" +
                         "Save Game opens a separate stage.\n" +
-                        "The falling shape is now a small custom component."
+                        "The falling shape is a small custom component.\n\n" +
+                        "The game logic has now been separated from the JavaFX interface."
         );
         infoLabel.setWrapText(true);
         infoLabel.setMaxWidth(360);
@@ -113,6 +123,21 @@ public class GameThirdVersion extends Application {
         root.setCenter(centreBox);
 
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.LEFT) {
+                game.moveBlockLeft();
+                updateBlockPosition();
+                updateStatusLabel();
+            } else if (event.getCode() == KeyCode.RIGHT) {
+                game.moveBlockRight();
+                updateBlockPosition();
+                updateStatusLabel();
+            } else if (event.getCode() == KeyCode.DOWN) {
+                moveBlockDown();
+            }
+        });
+
         startDrop();
 
         return scene;
@@ -140,7 +165,7 @@ public class GameThirdVersion extends Application {
 
         aboutItem.setOnAction(e -> new MessageWindow(
                 "About",
-                "This version adds a styled custom component for the falling block."
+                "This version separates the game state from the JavaFX interface."
         ).show());
 
         gameMenu.getItems().addAll(
@@ -183,7 +208,7 @@ public class GameThirdVersion extends Application {
 
         aboutItem.setOnAction(e -> new MessageWindow(
                 "About",
-                "The play scene uses a Timeline to move a custom FallingBlock down the board."
+                "The play scene uses a Timeline to ask the game to move the block down."
         ).show());
 
         gameMenu.getItems().addAll(
@@ -205,7 +230,7 @@ public class GameThirdVersion extends Application {
 
     private Pane createBoardPane() {
         Pane pane = new Pane();
-        pane.setPrefSize(COLS * CELL_SIZE, ROWS * CELL_SIZE);
+        pane.setPrefSize(game.getCols() * CELL_SIZE, game.getRows() * CELL_SIZE);
         pane.setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         pane.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         pane.setStyle(
@@ -216,8 +241,8 @@ public class GameThirdVersion extends Application {
                         "-fx-border-radius: 4;"
         );
 
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
+        for (int row = 0; row < game.getRows(); row++) {
+            for (int col = 0; col < game.getCols(); col++) {
                 Rectangle cell = new Rectangle(CELL_SIZE, CELL_SIZE);
                 cell.setX(col * CELL_SIZE);
                 cell.setY(row * CELL_SIZE);
@@ -233,14 +258,17 @@ public class GameThirdVersion extends Application {
     private void startDrop() {
         stopGame();
 
-        blockRow = 0;
-        blockCol = 4;
+        game.resetDrop();
+
+        if (fallingBlock != null) {
+            boardPane.getChildren().remove(fallingBlock);
+        }
 
         fallingBlock = new FallingBlock(CELL_SIZE);
         boardPane.getChildren().add(fallingBlock);
-        updateBlockPosition();
 
-        statusLabel.setText("Row: " + blockRow);
+        updateBlockPosition();
+        updateStatusLabel();
 
         gameTimeline = new Timeline(
                 new KeyFrame(Duration.millis(500), e -> moveBlockDown())
@@ -250,19 +278,26 @@ public class GameThirdVersion extends Application {
     }
 
     private void moveBlockDown() {
-        if (blockRow < ROWS - 1) {
-            blockRow++;
-            updateBlockPosition();
-            statusLabel.setText("Row: " + blockRow);
-        } else {
-            gameTimeline.stop();
+        game.moveBlockDown();
+        updateBlockPosition();
+        updateStatusLabel();
+
+        if (game.isBlockAtBottom()) {
+            stopGame();
             statusLabel.setText("Block reached the bottom");
         }
     }
 
     private void updateBlockPosition() {
-        fallingBlock.setX(blockCol * CELL_SIZE);
-        fallingBlock.setY(blockRow * CELL_SIZE);
+        fallingBlock.setX(game.getBlockCol() * CELL_SIZE);
+        fallingBlock.setY(game.getBlockRow() * CELL_SIZE);
+    }
+
+    private void updateStatusLabel() {
+        statusLabel.setText(
+                "Row: " + game.getBlockRow()
+                        + "    Col: " + game.getBlockCol()
+        );
     }
 
     private void stopGame() {
@@ -277,7 +312,7 @@ public class GameThirdVersion extends Application {
 
     /**
      * Custom component for the falling shape.
-     * It is static because it does not need access to the outer GameSecondVersion object.
+     * It is static because it does not need access to the outer GameThirdVersion object.
      */
     private static class FallingBlock extends Rectangle {
 
@@ -330,6 +365,7 @@ public class GameThirdVersion extends Application {
             );
         }
     }
+
     /**
      * Save window showing simple binding.
      */

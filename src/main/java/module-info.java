@@ -9,4 +9,5 @@ module examples {
     exports week10_examples.lecture10_3;
     exports week11_examples.lecture11_2;
     exports week10_examples.lecture10_3.legacy;
+    exports week11_examples.lecture11_1;
 }

@@ -15,8 +15,9 @@ public class BidirectionalBindingExample extends Application {
         StringProperty sharedText = new SimpleStringProperty();
         TextField textField1 = new TextField();
         TextField textField2 = new TextField();
-        sharedText.bindBidirectional(textField1.textProperty());
-        textField2.textProperty().bindBidirectional(sharedText);
+//        sharedText.bindBidirectional(textField1.textProperty());
+//        textField2.textProperty().bindBidirectional(sharedText);
+        textField2.textProperty().bindBidirectional(textField1.textProperty());
 
         // Layout
         VBox root = new VBox(10, textField1, textField2);
